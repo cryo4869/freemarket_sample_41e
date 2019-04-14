@@ -5,7 +5,7 @@
     .top-header__form
       = form_tag(" /products/search", method: :get)
       = text_field_tag :text, '', placeholder: 'キーワードから探す', name: 'keyword',class: 'form__input'
-      = button_tag '', class: "form__button fas fa-search", value: "&#xf002"
+      = button_tag '', class: "form__button fa fa-search", value: "&#xf002"
   .clearfix
     .top-header__search-link
       .search-link--category カテゴリから探す
@@ -16,8 +16,8 @@
           = image_tag("/member_photo_noimage_thumb.png", class: :"mypage__image")
           .mypage__title マイページ
       .user-info__notice
-        .far.fa-bell
+        .fa.fa-bell
         .notice__text お知らせ
       .user-info__todo
-        .fas.fa-check
+        .fa.fa-check
         .todo__text やることリスト
