@@ -10,7 +10,7 @@
           = f.label :ニックネーム
           %span.form-require 必須
           %br/
-          = f.email_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: " 例）メルカリ太郎"
+          = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: " 例）メルカリ太郎"
         .sign-up-form
           = f.label :メールアドレス
           %span.form-require 必須
