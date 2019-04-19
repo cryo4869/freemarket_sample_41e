@@ -1,6 +1,6 @@
 .item-box
   - if product.images.present?
-    = image_tag product.images.first.image, class: 'item-box__image'
+    = image_tag product.images.first.image_url.to_s, class: 'item-box__image'
   .item-box__name
     = product.name
   .item-box__price

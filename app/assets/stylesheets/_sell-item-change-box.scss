@@ -1,0 +1,16 @@
+.sell-item-change-box {
+  padding: 16px 16px 16px 16px;
+  &__btn-red {
+    @include btn-red;
+    @include btn-default;
+  }
+  &__btn-gray {
+    @include btn-gray;
+    @include btn-default;
+  }
+  &__text {
+    font-size: 15px;
+    text-align: center;
+    margin-top: 16px;
+  }
+}

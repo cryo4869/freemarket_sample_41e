@@ -31,6 +31,16 @@
     vertical-align: top;
     font-weight: 600;
   }
+  .form-option{
+    background-color: #ccc;
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+    font-weight: 600;
+  }
   .single-main {
  
   }
@@ -124,8 +134,11 @@
         select::-ms-expand {
           display: none;
         }
-        .fa-angle-down {
+        .fa-chevron-down{
+          font-size: 18px;
           color: #888;
+          z-index: 5;
+          top: 30%;
         }
       }
       &__select-default {
@@ -196,11 +209,8 @@
       }
       &__btn-gray {
         @include btn-default;
-        width: 45%;
-        margin: 24px auto 0;
-        background: #aaa;
-        border: 1px solid #aaa;
-        color: #fff;
+        @include btn-gray;
+        line-height: 48px;
       }
     }
   }

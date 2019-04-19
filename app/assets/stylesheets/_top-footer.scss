@@ -1,0 +1,52 @@
+.top-footer__wrap{
+  width: 100%;
+  background-color: #212121;
+}
+
+.top-footer{
+  color: white;
+  font-size: 13px;
+  margin: 0 auto;
+  width: 1020px;
+  height: 100%;
+  text-align: center;
+  line-height: 30px;
+  &__title{
+    font-size: 15px;
+    font-weight: bold;
+    padding: 20px 80px;
+  }
+  &__about-mercari{
+    display: inline-block;
+    vertical-align: top;
+
+  }
+  &__view-mercuri{
+    display: inline-block;
+    vertical-align: top;
+  }
+  &__help{
+    display: inline-block;
+    vertical-align: top;
+  }
+  &__country{
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+  }
+  &__icon{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 5px;
+    right: 5px;
+  }
+  &__name{
+    display: inline-block;
+    line-height: 40px;
+  }
+  &__logo{
+    margin-top: 60px;
+  }
+}

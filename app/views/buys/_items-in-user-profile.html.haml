@@ -3,10 +3,10 @@
   %a{ :href => '', :class => 'items-in-user-profile__category__name'}
     カワさんのその他の出品
   - @products.each do |product|
-    = render partial: "item", locals: { product: product }
+    = render partial: "products/item", locals: { product: product }
   .items-in-user-profile__category
   %a{ :href => '', :class => 'items-in-user-profile__category__name'}
     カーディガン （メンズ） その他の商品
   - @products.each do |product|
-    = render partial: "item", locals: { product: product }
+    = render partial: "products/item", locals: { product: product }
 

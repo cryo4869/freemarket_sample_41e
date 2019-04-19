@@ -17,44 +17,59 @@
               .sell-upload__items
                 %ul
             .sell-upload__drop-box.have-item-0#file-upload
-              = f.fields_for :images, @sell.images.build do |f|
-                = f.file_field :image,multiple:true,id:'file',style:"display: none;"
+              = f.fields_for @image, @sell.images.build do |f|
+                = f.file_field :image,name: 'images[image][0]',id:'file',style:"display: none;"
               %pre.visible-pc#btn
                 ドラッグアンドドロップ
                 またはクリックしてファイルをアップロード
                 %i.fa.fa-camera{style:"display: none;"}
         .sell-content
-          .sell-content__name_form.form-group
+          .sell-content__name_form.form-group.bold
             = f.label "商品名"
             %span.sell-content__name_require.form-require
               必須
             = f.text_field :name,class: "sell-content__input input-default", placeholder: "商品名（必須 40文字まで)"
-          .sell-content__desc.form-group
+          .sell-content__desc.form-group.bold
             = f.label "商品の説明"
             %span.sell-content__desc_require.form-require
               必須
             = f.text_area :info,class:"sell-content__desc_textarea textarea-default",rows:"5" ,placeholder:"商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
         .sell-content.clearfix
           %h3.sell-content__detail-head.sub-head 商品の詳細
-          .sell-content__detail.form-box
+          .sell-content__detail.form-box.bold
             .sell-content__detail_form.form-group
               = f.label "カテゴリー"
               %span.sell-content__detail_require.form-require
                 必須
+              .sell-content__select-wrap#category-top
+                = f.select :category_id, options_from_collection_for_select( Category.roots.sort, :id, :name),{prompt: "---"},class:"sell-content__select-default"
+                %i.fas.fa-chevron-down
+              .sell-content__select-wrap#category-middle
+              .sell-content__select-wrap#category-bottom
+            .sell-content__detail_form.form-group.display-none#size
+              = f.label "サイズ"
+              %span.sell-content__detail_require.form-require
+                必須
               .sell-content__select-wrap
-                %select.sell-content__select-default
-                %i.fa.fa-angle-down.fa-2x
+                = f.collection_select :size_id, Size.roots.find(1).children,:id, :size, {prompt: "---"},{class:"sell-content__select-default",id:"size"}
+                %i.fas.fa-chevron-down.fa-2x
+            .sell-content__detail_form.form-group.no-margin.display-none#brand
+              = f.label "ブランド"
+              %span.sell-content__detail_require.form-option
+                任意
+              .sell-content__select-wrap
+                = f.text_field :brand,class: "sell-content__input input-default"
             .sell-content__detail_form.form-group
               = f.label "商品の状態"
               %span.sell-content__detail_require.form-require
                 必須
               .sell-content__select-wrap
-                = f.select :status, Product.statuses.keys, {}, class: "sell-content__select-default"
-                %i.fa.fa-angle-down.fa-2x
+                = f.select :status, Product.statuses.keys, {prompt: "---"}, class: "sell-content__select-default"
+                %i.fas.fa-chevron-down.fa-2x
         .sell-content.clearfix
           %h3.sell-content__delivery-head.sub-head 配送について
           = link_to "?","https://mercari.com/jp/help_center/article/68/",target:"_blank",class:"form-question"
-          .sell-content__delivery.form-box
+          .sell-content__delivery.form-box.bold
             .sell-content__delivery_form_wrap.form-group
               .sell-content__delivery_form
                 = f.label "配送料の負担"
@@ -62,7 +77,7 @@
                   必須
               .sell-content__select-wrap
                 = f.collection_select :delivery_fee_owner_id, DeliveryFeeOwner.all,:id, :delivery_fee_owner, {prompt: "---"},{class:"sell-content__select-default",id:"delivery_fee_owner"}
-                %i.fa.fa-angle-down.fa-2x
+                %i.fas.fa-chevron-down.fa-2x
             .sell-content__delivery_form_wrap.form-group#shipping_method.display-none
               .sell-content__delivery_form
                 = f.label "配送の方法"
@@ -70,7 +85,7 @@
                   必須
               .sell-content__select-wrap.shipping-method
                 = render partial: 'shipping_method',locals: {f:f,delivery_fee_owner_id: DeliveryFeeOwner.first.id}
-                %i.fa.fa-angle-down.fa-2x
+                %i.fas.fa-chevron-down.fa-2x
             .sell-content__delivery_form_wrap.form-group
               .sell-content__delivery_form
                 %label
@@ -78,8 +93,8 @@
                   %span.sell-content__delivery_require.form-require
                     必須
                 .sell-content__select-wrap
-                  %select.sell-content__select-default
-                  %i.fa.fa-angle-down.fa-2x
+                  = f.select :shipping_from, Product.shipping_froms.keys, {prompt: "---"}, class: "sell-content__select-default"
+                  %i.fas.fa-chevron-down.fa-2x
             .sell-content__delivery_form_wrap.form-group
               .sell-content__delivery_form
                 %label
@@ -88,13 +103,13 @@
                     必須
                 .sell-content__select-wrap
                   = f.collection_select :delivery_date_id, DeliveryDate.all,:id, :delivery_date, {prompt: "---"},{class:"sell-content__select-default",id:"delivery_date"}
-                  %i.fa.fa-angle-down.fa-2x
+                  %i.fas.fa-chevron-down.fa-2x
         .sell-content.clearfix
           %h3.sell-content__price-head.sub-head 販売価格(300〜9,999,999)
           = link_to "?","https://mercari.com/jp/help_center/article/68/",target:"_blank",class:"form-question"
           .sell-content__price.form-box
             %ul.sell-content__price-list
-              %li.sell-content__price-list_form.form-group
+              %li.sell-content__price-list_form.form-group.bold
                 .clearfix
                   = f.label "価格"
                   %span.sell-content__price_require.form-require
