@@ -4,12 +4,9 @@ class BuysController < ApplicationController
 
   end
   def show
-
-
     @product = Product.find(params[:id])
     @user = @product.user
     @products = Product.order("created_at ASC").limit(3)
-
   end
 
   def new
