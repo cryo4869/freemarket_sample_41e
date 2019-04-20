@@ -47,14 +47,15 @@ body{
   &__user-info{
     line-height: 50px;
     .user-info__mypage{
-    display: inline-block;
-    margin-left: 420px;
+    text-align: right;
       .mypage__image{
-        float: left;
         border-radius: 50%;
         width: 32px;
         height: 32px;
         margin-top: 10px;
+        position: absolute;
+        top: 2.5%;
+        right: 36%;
       }
       .mypage__title{
         display: inline-block;
@@ -85,4 +86,21 @@ body{
       }
     }
   }
+}
+.user-info__signup{
+  display: inline-block;
+}
+.user-info__signin{
+  display: inline-block;
+}
+.user-info__box1{
+  padding: 0 10px;
+  font-weight: bold;
+  color: white;
+  background: red;
+  border-radius: 7px;
+  margin: 5px;
+}
+.user-info__information{
+
 }

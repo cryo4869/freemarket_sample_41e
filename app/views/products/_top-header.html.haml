@@ -1,7 +1,7 @@
 .top-header
   .clearfix
     = link_to root_path do
-      = image_tag("/logo.svg", class: :"top-header__logo")
+      = image_tag("/mercari-sign-up.svg", class: :"top-header__logo")
     .top-header__form
       = form_tag(" /products/search", method: :get)
       = text_field_tag :text, '', placeholder: 'キーワードから探す', name: 'keyword',class: 'form__input'
@@ -11,13 +11,28 @@
       .search-link--category カテゴリから探す
       .search-link--brand ブランドから探す
     .top-header__user-info
-      .user-info__mypage
-        = link_to root_path do
-          = image_tag("/member_photo_noimage_thumb.png", class: :"mypage__image")
-          .mypage__title マイページ
-      .user-info__notice
-        .fa.fa-bell
-        .notice__text お知らせ
-      .user-info__todo
-        .fa.fa-check
-        .todo__text やることリスト
+      - if user_signed_in?
+        .user-info__mypage
+          = link_to  destroy_user_session_path, method: :delete do
+            ログアウト
+            / とりあえずのログアウトボタンです。ログアウトボタンを他のところでつけると思うのでその時に消します。
+          = link_to "/users/#{current_user.id}" do
+            = image_tag("/mypage.png", class: :"mypage__image")
+            .mypage__title マイページ
+          .user-info__notice
+            .fa.fa-bell
+            .notice__text お知らせ
+          .user-info__todo
+            .fa.fa-check
+            .todo__text やることリスト
+      - else
+        .user-info__mypage
+          %ul.user-info__information
+            %li.user-info__signin
+              = link_to new_user_session_path, class: 'user-info__link' do
+                .user-info__box1
+                  ログイン
+            %li.user-info__signup
+              = link_to signup_users_path, class: 'user-info__link' do
+                .user-info__box1
+                  新規会員登録
