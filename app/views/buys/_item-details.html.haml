@@ -16,7 +16,7 @@
             %tr
               %th 出品者
               %td
-                =link_to @user.nickname, user_path
+                =link_to @product.user.nickname, user_path(@product.user.id)
                 .item-user-ratings
                   .item-user-ratings__list
                     %i.fas.fa-laugh
@@ -70,28 +70,29 @@
         (税込)
       .item-details__price__shipping-fee
         送料込み
-    - if @user.id == @product.id
-      %button.item-details__btn-red
-        購入画面に進む
+    - if current_user
+      - if current_user.id != @product.user.id
+        %button.item-details__btn-red
+          購入画面に進む
 
     .item-details__description
       - if @product.info
         = @product.info
       - else
         商品の説明はありません
-
-    - if @user.id == @product.id
-      .item-details__button
-        .item-details__button__left
-          %button
-            .far.fa-heart
-            いいね！
-            １
-          %button
-            .far.fa-flag
-            不適切な商品の報告
-        .item-details__button__right
-          .fas.fa-lock
-          =link_to "あんしん・あんぜんへの取り組み"
+    - if current_user
+      - if current_user.id != @product.user.id
+        .item-details__button
+          .item-details__button__left
+            %button
+              .far.fa-heart
+              いいね！
+              １
+            %button
+              .far.fa-flag
+              不適切な商品の報告
+          .item-details__button__right
+            .fas.fa-lock
+            =link_to "あんしん・あんぜんへの取り組み"
 
 

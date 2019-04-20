@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @user = current_user
     @products = Product.order("created_at ASC").limit(3)
   end
 
