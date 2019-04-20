@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-
+    @product = Product.find(params[:id])
+    @products = Product.order("created_at ASC").limit(3)
   end
 
   def new

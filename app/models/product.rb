@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   belongs_to :delivery_date
   belongs_to :category
   belongs_to :size
+  belongs_to :user
   validates :name, presence: true
 
   enum status: {  '新品未使用': 1, '未使用に近い': 2, '目立った傷や汚れなし': 3,
