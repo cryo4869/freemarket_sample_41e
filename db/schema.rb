@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_20_041753) do
+ActiveRecord::Schema.define(version: 2019_04_28_074020) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 2019_04_20_041753) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["parent_id"], name: "index_categories_on_parent_id"
+  end
+
+  create_table "credits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "card_number", null: false
+    t.integer "expiration_month", null: false
+    t.integer "expiration_year", null: false
+    t.integer "security_code", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_credits_on_user_id"
   end
 
   create_table "delivery_dates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -115,6 +126,7 @@ ActiveRecord::Schema.define(version: 2019_04_20_041753) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "credits", "users"
   add_foreign_key "images", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "delivery_dates"
