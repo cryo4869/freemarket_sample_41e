@@ -6,18 +6,15 @@
       %section.buy-content
         .buy-content__inner
           %h3.buy-content__item-image.buy-item
-            / = image_tag "https://static.mercdn.net/thumb/photos/m82884941197_1.jpg?1541928495"
             = image_tag @product.images.first.image_url.to_s
             %p.buy-content__item-name.bold
               = @product.name
             = form_with url:root_path, class:"buy-content__form" ,local:true do |f|
-              //金額もサーバーサイドができたら反映させる
               .buy-content__price-ja.bold
                 ¥
                 = @product.price
                 %span.buy-content__shipping-fee.bold
                   送料込み
-              //サーバサイドができたらポイントの有無で条件分岐させる
               %ul.buy-content__point.not-have
                 .buy-content__point_parent
                   .buy-content__point_parent-toggle
@@ -34,16 +31,16 @@
       %section.buy-content.buy-content__user-info
         .buy-content__inner.h3
           %h3 配送先
-          %address.buy-content__user-info-text
-            〒231-0023
-            %br
-            神奈川県 横浜市中区
-            山下町247-2
-            武内ビル 503
-            %br
-            林 悠暉
+            %address.buy-content__user-info-text
+              〒231-0023
+              %br
+              神奈川県 横浜市中区
+              山下町247-2
+              武内ビル 503
+              %br
+              林 悠暉
           %p.buy-content__user-info-text
-          = link_to "https://www.mercari.com/jp/transaction/address/m33016370175/",class:"buy-content__user-info-fix" do
+          = link_to "",class: "buy-content__user-info-fix" do
             変更する
             %i.fa.fa-angle-right
       %section.buy-content.buy-content__user-info
@@ -55,7 +52,7 @@
             12 / 20
           %figure
             = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1355968437"
-            = link_to "https://www.mercari.com/jp/transaction/address/m33016370175/",class:"buy-content__user-info-fix" do
+            = link_to "",class: "buy-content__user-info-fix" do
               変更する
               %i.fa.fa-angle-right
 
