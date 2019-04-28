@@ -31,14 +31,14 @@
       %section.buy-content.buy-content__user-info
         .buy-content__inner.h3
           %h3 配送先
-            %address.buy-content__user-info-text
-              〒231-0023
-              %br
-              神奈川県 横浜市中区
-              山下町247-2
-              武内ビル 503
-              %br
-              林 悠暉
+          %address.buy-content__user-info-text
+            〒231-0023
+            %br
+            神奈川県 横浜市中区
+            山下町247-2
+            武内ビル 503
+            %br
+            林 悠暉
           %p.buy-content__user-info-text
           = link_to "",class: "buy-content__user-info-fix" do
             変更する
@@ -46,10 +46,11 @@
       %section.buy-content.buy-content__user-info
         .buy-content__inner.h3
           %h3 支払い方法
-          %p.buy-content__user-info-text
-            ************0004
-            %br
-            12 / 20
+          - if @user.credit
+            %p.buy-content__user-info-text
+              = @user.credit.card_number
+              %br
+              = "#{@user.credit.expiration_month} / #{@user.credit.expiration_year}"
           %figure
             = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1355968437"
             = link_to "",class: "buy-content__user-info-fix" do

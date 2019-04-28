@@ -10,6 +10,7 @@ class BuysController < ApplicationController
 
   def purchase
     @product = Product.find(params[:id])
+    @user = @product.user
   end
 
   def new
