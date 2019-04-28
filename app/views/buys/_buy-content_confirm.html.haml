@@ -6,13 +6,15 @@
       %section.buy-content
         .buy-content__inner
           %h3.buy-content__item-image.buy-item
-            = image_tag "https://static.mercdn.net/thumb/photos/m82884941197_1.jpg?1541928495"
+            / = image_tag "https://static.mercdn.net/thumb/photos/m82884941197_1.jpg?1541928495"
+            = image_tag @product.images.first.image_url.to_s
             %p.buy-content__item-name.bold
-              Cisco ASA(5505) 、CD等の付属品アリ
+              = @product.name
             = form_with url:root_path, class:"buy-content__form" ,local:true do |f|
               //金額もサーバーサイドができたら反映させる
               .buy-content__price-ja.bold
-                ¥ 25,000
+                ¥
+                = @product.price
                 %span.buy-content__shipping-fee.bold
                   送料込み
               //サーバサイドができたらポイントの有無で条件分岐させる
@@ -25,8 +27,9 @@
                 %li.buy-content__price-row.bold
                   .buy-content__price-cell
                     支払い金額
-                  .buy-content__price-cell 
-                    17,800   
+                  .buy-content__price-cell
+                    ¥
+                    = @product.price
               = button_tag "購入する",class:"btn-default btn-red bold"
       %section.buy-content.buy-content__user-info
         .buy-content__inner.h3
@@ -40,7 +43,7 @@
             %br
             林 悠暉
           %p.buy-content__user-info-text
-          = link_to "https://www.mercari.com/jp/transaction/address/m33016370175/",class:"buy-content__user-info-fix" do 
+          = link_to "https://www.mercari.com/jp/transaction/address/m33016370175/",class:"buy-content__user-info-fix" do
             変更する
             %i.fa.fa-angle-right
       %section.buy-content.buy-content__user-info
@@ -59,4 +62,4 @@
 
 
 
-      
+
