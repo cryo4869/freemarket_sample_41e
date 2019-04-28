@@ -10,7 +10,7 @@ class BuysController < ApplicationController
 
   def purchase
     @product = Product.find(params[:id])
-    @user = @product.user
+    @credit = @product.user.credit
   end
 
   def new

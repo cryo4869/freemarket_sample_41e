@@ -46,11 +46,11 @@
       %section.buy-content.buy-content__user-info
         .buy-content__inner.h3
           %h3 支払い方法
-          - if @user.credit
-            %p.buy-content__user-info-text
-              = @user.credit.card_number
+          %p.buy-content__user-info-text
+            - if @credit
+              = @credit.card_number.gsub!(/\d(?=(\D*\d){4})/,"x")
               %br
-              = "#{@user.credit.expiration_month} / #{@user.credit.expiration_year}"
+              = "#{@credit.expiration_month} / #{@credit.expiration_year}"
           %figure
             = image_tag "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?1355968437"
             = link_to "",class: "buy-content__user-info-fix" do
