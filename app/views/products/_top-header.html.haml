@@ -2,10 +2,9 @@
   .clearfix
     = link_to root_path do
       = image_tag("/mercari-sign-up.svg", class: :"top-header__logo")
-    .top-header__form
-      = form_tag(" /products/search", method: :get)
-      = text_field_tag :text, '', placeholder: 'キーワードから探す', name: 'keyword',class: 'form__input'
-      = button_tag '', class: "form__button fa fa-search", value: "&#xf002"
+    = search_form_for @search,url:search_products_path,class:"top-header__form" do |f|
+      = f.search_field :name_cont,class: 'form__input',placeholder: 'キーワードから探す'
+      = f.button '', class: "form__button fa fa-search"
   .clearfix
     .top-header__search-link
       .search-link--category カテゴリから探す

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'shipping_method', on: :collection
     get 'category_middle', on: :collection
     get 'category_bottom', on: :collection
+    get 'search', on: :collection
   end
   resources :buys
 end
