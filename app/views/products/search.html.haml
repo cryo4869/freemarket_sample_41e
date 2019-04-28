@@ -1,0 +1,72 @@
+= render 'top-header.html.haml'
+.search-container
+  .search-content
+    .search-content__items-container
+      .search-content__result-head
+        %h2 検索結果 1-48 件
+      .search-content__items-box-content
+        - @result.each do | item |
+          .search-content__items-box
+            %figure.search-content__items-photo
+              = image_tag item.images.first.image_url.to_s
+            .search-content__items-box-body
+              .search-content__items-box-name.font-2
+                = item.name
+              .search-content__items-box-num
+                = "¥ #{item.price}"
+              .search-content__items-box-tax (税込)
+  .side-content
+    = form_with url:"products/extend-search",class:"side-content__extend-form", local:true do |f|
+      .side-content__sort
+        .side-content__select-wrap
+          = f.select :status, Product.statuses.keys, {prompt: "---"}, class:"select-default"
+          %i.fas.fa-chevron-down.fa-2x
+      .side-content__dropdown.search-extend
+        %h3.visible-large 詳細検索
+        .side-content__form.form-group
+          %i.fas.fa-plus
+          = f.label "キーワードを追加する"
+          = f.search_field :name_cont, class:"input-default", placeholder:"例）値下げ"
+        .side-content__form.form-group
+          %i.fas.fa-list-ul
+          = f.label "カテゴリーを選択する"
+          = f.search_field :name_cont, class:"input-default", placeholder:"例）値下げ"
+        .side-content__form.form-group
+          %i.fas.fa-tags
+          = f.label "ブランド名から探す"
+          = f.search_field :name_cont, class:"input-default", placeholder:"例）値下げ"
+        .side-content__form.form-group
+          %i.fas.fa-expand
+          = f.label "サイズを指定する"
+          = f.search_field :name_cont, class:"input-default", placeholder:"例）値下げ"
+        .side-content__form.form-group
+          %i.fas.fa-coins
+          = f.label "価格"
+          = f.search_field :name_cont, class:"input-default", placeholder:"例）値下げ"
+        .side-content__form.form-group
+          %i.fas.fa-coins
+          = f.label "商品の状態"
+        .side-content__checkbox
+          = f.check_box :product_status_id_eq_any, {multiple: true},'1',''
+          = f.label :すべて
+          = f.check_box :product_status_id_eq_any, {multiple: true},'2',''
+          = f.label :新品、未使用
+          = f.check_box :product_status_id_eq_any, {multiple: true},'3',''
+          = f.label :未使用に近い
+        .side-content__form.form-group
+          %i.fas.fa-coins
+          = f.label "配送料の負担"
+        .side-content__form.form-group
+          %i.fas.fa-coins
+          = f.label "販売状況"
+        .side-content__extend-btn.clearfix
+          .side-content__btn-gray
+            クリア
+          .side-content__btn-red
+            完了
+
+
+//= render 'top-footer. html.haml'
+
+
+

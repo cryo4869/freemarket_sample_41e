@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.order("created_at ASC").limit(4)
+    @search = Product.ransack(params[:q])
+    @result = @search.result
   end
 
   def show
@@ -16,7 +18,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @sell = Product.new(sell_params)
+    @sell = current_user.products.new(sell_params)
 
     if @sell.save! & save_images(@sell, image_params)
       redirect_to product_path(@sell)
@@ -26,8 +28,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @sell = Product.find(params[:id])
-    @image = @sell.images
+      @sell = Product.find(params[:id])
+      @image = @sell.images
   end
 
   def update
@@ -37,6 +39,11 @@ class ProductsController < ApplicationController
     else
       redirect_to root_path
     end
+  end
+
+  def search
+  @search = Product.ransack(params[:q])
+  @result = @search.result
   end
 
   def shipping_method
@@ -55,7 +62,11 @@ class ProductsController < ApplicationController
 
   def sell_params
     params.require(:product).permit(:delivery_fee_owner_id, :shipping_method_id,:delivery_date_id, :name, :info, :price, :status,
-                                    :size_id, :category_id, :shipping_from, :brand)
+                                    :size_id, :category_id, :shipping_from, :brand,user_id:current_user.id)
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 
   def image_params
