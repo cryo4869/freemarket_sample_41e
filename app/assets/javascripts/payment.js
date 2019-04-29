@@ -7,11 +7,13 @@ $(document).on('turbolinks:load', function() {
     e.preventDefault();
     form.find("input[type=submit]").prop("disabled", true);
     var card = {
-      number: parseInt($("#payment_card_no").val()),
-      cvc: parseInt($("#payment_card_security_code").val()),
-      exp_month: parseInt($("#payment_card_expire_mm").val()),
-      exp_year: parseInt($("#payment_card_expire_yy").val())
+      number: $("#payment_card_no").val(),
+      cvc: $("#payment_card_security_code").val(),
+      exp_month: $("#payment_card_expire_mm").val(),
+      exp_year: $("#payment_card_expire_yy").val()
     };
+    console.log(card);
+
     Payjp.createToken(card, function(s, response) {
       if (response.error) {
         alert("error")
@@ -24,7 +26,7 @@ $(document).on('turbolinks:load', function() {
         $(".exp_year").removeAttr("name");
 
         var token = response.id;
-        $("#charge-form").append($('<input type="hidden" name="payjp_token" class="payjp-token" />').val(token));
+        $("#charge-form").append($('<input type="hidden" name="payjpToken" class="payjp-token" />').val(token));
         $("#charge-form").get(0).submit();
       }
     });

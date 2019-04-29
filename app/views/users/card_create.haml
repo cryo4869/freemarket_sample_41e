@@ -5,7 +5,7 @@
     .payment-content.form-group
       .payment-content__credit-head
         %h2 クレジットカード情報入力
-      = form_tag("/users/pay", method: "POST", id: "charge-form",class:"payment-content__form") do
+      = form_tag("/users/add_card", method: "POST", id: "charge-form",class:"payment-content__form") do
         .payment-content__content
           %label カード番号
           %span.sell-content__detail_require.form-require
@@ -25,19 +25,21 @@
             %li
               = image_tag '/discover.svg',class:"payment-content__credit-icon"
           .payment-content__form-expire.form-group
-            %label 有効期限
-            %span.sell-content__detail_require.form-require
-              必須
+            .payment-content__expire
+              %label 有効期限
+              %span.sell-content__detail_require.form-require
+                必須
+            -#%input{type: "text", class: "exp_month select-default", id: "payment_card_expire_mm",  name: "exp_month", maxlength: "2", placeholder: "月"}
+            -#%input{type: "text", class: "exp_year select-default", name: "exp_year", id: "payment_card_expire_yy",maxlength: "4",  placeholder: "年"}
             .payment-content__select-wrap
               = select_tag :exp_month, options_for_select(User.expire_mms.keys), {id: "payment_card_expire_mm",class:"exp_month select-default"}
               %i.fas.fa-chevron-down.fa-2x
-              %span 月
+            %span 月
             .payment-content__select-wrap
               = select_tag :exp_year, options_for_select(User.expire_yys.keys), {id: "payment_card_expire_yy",class:"exp_year select-default"}
               %i.fas.fa-chevron-down.fa-2x
+            .payment-content__year
               %span 年
-              //%input{type: "text", class: "exp_month select-default", id: "payment_card_expire_mm",  name: "exp_month", maxlength: "2", placeholder: "月"}
-              //%input{type: "text", class: "exp_year select-default", name: "exp_year", maxlength: "4",  placeholder: "年"}
           .payment-content__form-security-code.form-group
             %label セキュリティコード
             %span.sell-content__detail_require.form-require
@@ -47,7 +49,7 @@
               .payment-content__seqcode-text
                 .form-question ?
                 カード裏面の番号とは？
-            -#%input.payjp-token{ type: "hidden", name: "payjpToken", value: "" }
-          = submit_tag "追加する",class:"submit-button payment-content__btn"
+          %input.payjp-token{ type: "hidden", name: "payjpToken", value: "" }
+          = submit_tag "追加する",id:"submit-button", class:"payment-content__btn"
 = render 'products/top-footer.html.haml'
 

@@ -17,6 +17,7 @@
   &__select-wrap{
     @include select-wrap;
     width: 30%;
+    display: inline-block;
   }
   .select-default {
     @include select-default;
@@ -67,5 +68,11 @@
       margin: 40px 0 0;
       @include btn-default;
       @include btn-red;
+  }
+  &__month{
+    display: inline-block;
+  }
+  &__year {
+    display: inline-block;
   }
 }
