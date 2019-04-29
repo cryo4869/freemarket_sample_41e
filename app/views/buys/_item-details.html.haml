@@ -72,7 +72,7 @@
         送料込み
     - if current_user
       - if current_user.id != @product.user.id
-        = link_to purchase_buy_path(@product.id) do
+        = link_to purchase_path(@product.id) do
           %button.item-details__btn-red
             購入画面に進む
 
