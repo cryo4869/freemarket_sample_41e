@@ -23,9 +23,14 @@ class PurchaseController < ApplicationController
       :customer => card.customer_id, #顧客ID
       :currency => 'jpy', #日本円
       )
+    product.update(sell_status_id: 3)
+    if product.save!
     redirect_to action: 'done' #完了画面に移動
-  end
-  def done
+    else
+      redirect_to action: 'new'
+    end
 
+    def done
+    end
   end
 end

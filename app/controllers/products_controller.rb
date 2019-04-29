@@ -19,7 +19,6 @@ class ProductsController < ApplicationController
 
   def create
     @sell = current_user.products.new(sell_params)
-
     if @sell.save! & save_images(@sell, image_params)
       redirect_to product_path(@sell)
     else
@@ -62,7 +61,7 @@ class ProductsController < ApplicationController
 
   def sell_params
     params.require(:product).permit(:delivery_fee_owner_id, :shipping_method_id,:delivery_date_id, :name, :info, :price, :status,
-                                    :size_id, :category_id, :shipping_from, :brand,user_id:current_user.id)
+                                    :size_id, :category_id, :shipping_from,:sell_status_id ,:brand,user_id:current_user.id)
   end
 
   def search_params
