@@ -28,8 +28,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
-      @sell = Product.find(params[:id])
-      @image = @sell.images
+     @sell = Product.find(params[:id])
+     @image = @sell.images
   end
 
   def update

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get :signup
+      get :payment_method
+      post :pay
     end
   end
   root 'products#index'

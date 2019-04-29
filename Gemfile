@@ -88,3 +88,4 @@ gem "carrierwave"
 gem 'acts_as_tree'
 gem 'fog'
 gem 'ransack'
+gem 'payjp'

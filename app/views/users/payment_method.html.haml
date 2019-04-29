@@ -1,0 +1,53 @@
+= render 'products/top-header.html.haml'
+.mypage-container.clearfix
+  = render 'users/mypage'
+  .payment-container
+    .payment-content.form-group
+      .payment-content__credit-head
+        %h2 クレジットカード情報入力
+      = form_tag("/users/payment_method", method: "POST", id: "charge-form",class:"payment-content__form") do
+        .payment-content__content
+          %label カード番号
+          %span.sell-content__detail_require.form-require
+            必須
+          %input{maxlength: "16", type: "text", class: "number input-default", id: "payment_card_no" ,name: "number", placeholder: "半角数字のみ"}
+          %ul.payment-content__card-list
+            %li
+              = image_tag '/visa.svg',class:"payment-content__credit-icon"
+            %li
+              = image_tag '/master-card.svg',class:"payment-content__credit-icon"
+            %li
+              = image_tag '/saison-card.svg',class:"payment-content__credit-icon"
+            %li
+              = image_tag '/jcb.svg',class:"payment-content__credit-icon"
+            %li
+              = image_tag '/dinersclub.svg',class:"payment-content__credit-icon"
+            %li
+              = image_tag '/discover.svg',class:"payment-content__credit-icon"
+          .payment-content__form-expire.form-group
+            %label 有効期限
+            %span.sell-content__detail_require.form-require
+              必須
+            .payment-content__select-wrap
+              = select_tag :exp_month, options_for_select(User.expire_mms.keys), {id: "payment_card_expire_mm",class:"exp_month select-default"}
+              %i.fas.fa-chevron-down.fa-2x
+              %span 月
+            .payment-content__select-wrap
+              = select_tag :exp_year, options_for_select(User.expire_yys.keys), {id: "payment_card_expire_mm",class:"exp_year select-default"}
+              %i.fas.fa-chevron-down.fa-2x
+              %span 年
+              //%input{type: "text", class: "exp_month select-default", id: "payment_card_expire_mm",  name: "exp_month", maxlength: "2", placeholder: "月"}
+              //%input{type: "text", class: "exp_year select-default", name: "exp_year", maxlength: "4",  placeholder: "年"}
+          .payment-content__form-security-code.form-group
+            %label セキュリティコード
+            %span.sell-content__detail_require.form-require
+              必須
+            %input{type: "text", class: "cvc input-default", id: "payment_card_security_code", name: "cvc", maxlength: "3", placeholder: "カード背面4桁もしくは3桁の番号"}
+            .payment-content__seqcode
+              .payment-content__seqcode-text
+                .form-question ?
+                カード裏面の番号とは？
+            %input.payjp-token{ type: "hidden", name: "payjpToken", value: "" }
+          = submit_tag "追加する",class:"submit-button payment-content__btn"
+= render 'products/top-footer.html.haml'
+

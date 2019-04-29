@@ -1,0 +1,50 @@
+.mypage-container{
+  padding: 0 0 40px;
+  margin: 40px auto 0;
+  width: 1020px;
+}
+.clearfix {
+  @include clearfix ;
+}
+.mypage-content{
+  float: left;
+  width: 280px;
+  margin: 0 40px 0 0;
+  .fa-chevron-right{
+    display: inline-block;
+    position: absolute;
+    top: 23px;
+    right: 15px;
+    color: #ccc;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    -webkit-transition: all ease-out .2s;
+    transition: all ease-out .2s;
+  }
+  &__nav{
+
+  }
+  &__nav-list{
+    position: relative;
+    ul{
+      list-style: none;
+    }
+    li{
+      border-top: 1px solid #eee;
+    }
+  }
+  &__nav-list-item {
+    position: relative;
+    display: block;
+    padding: 16px;
+    background: #fff;
+    font-size: 14px;
+    color: #333;
+  }
+  &__nav-head{
+    margin: 40px 0 0;
+  }
+  &__nav-head+&__nav-list {
+    margin: 8px 0 0;
+  }
+}
