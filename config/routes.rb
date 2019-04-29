@@ -18,4 +18,9 @@ Rails.application.routes.draw do
     get 'search', on: :collection
   end
   resources :buys
+  resources :purchase do
+    member do
+      post :pay
+    end
+  end
 end
