@@ -145,6 +145,7 @@
       &__btn-red {
         @include btn-default;
         @include btn-red;
+        margin: 40px 0 0;
       }
       &__btn-gray {
         @include btn-default;
