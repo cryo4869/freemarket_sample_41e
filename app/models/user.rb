@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :address, dependent: :destroy
+  has_one :credit
   has_many :products
   # accepts_nested_attributes_for :address
   enum expire_mm: {  '01': 1, '02': 2, '03': 3, '04': 4, '05': 5, '06': 6, '07': 7,

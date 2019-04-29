@@ -8,6 +8,11 @@ class BuysController < ApplicationController
     @products = Product.order("created_at ASC").limit(3)
   end
 
+  def purchase
+    @product = Product.find(params[:id])
+    @credit = @product.user.credit
+  end
+
   def new
 
   end

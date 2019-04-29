@@ -17,10 +17,15 @@ Rails.application.routes.draw do
     get 'category_bottom', on: :collection
     get 'search', on: :collection
   end
+<<<<<<< HEAD
   resources :buys
   resources :purchase do
     member do
       post :pay
     end
+=======
+  resources :buys do
+    get :purchase, on: :member
+>>>>>>> master
   end
 end
