@@ -48,3 +48,7 @@
     .top-footer__logo
       = image_tag("/logo-white.svg", class: :"top-footer__logo__image")
       .top-footer__copyright &copy; 2019 Mercari
+    = link_to new_product_path,class:"top-footer__sell-btn" do
+      .top-footer__sell-text
+        出品
+      %i.fas.fa-camera
