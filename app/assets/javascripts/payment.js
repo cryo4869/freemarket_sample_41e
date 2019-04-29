@@ -3,6 +3,7 @@ $(document).on('turbolinks:load', function() {
   Payjp.setPublicKey('pk_test_15b0bd0943e2abe91d7b50c5');
 
   $("#charge-form").on("click", "#submit-button", function(e) {
+    console.log("着火");
     e.preventDefault();
     form.find("input[type=submit]").prop("disabled", true);
     var card = {

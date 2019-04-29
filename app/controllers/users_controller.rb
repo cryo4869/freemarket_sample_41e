@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def signup
   end
 
@@ -10,11 +11,11 @@ class UsersController < ApplicationController
 
   end
   def pay
-    Payjp.api_key = 'sk_test_cfc354b6aa7a9d29b10bf702'
-    if params['payjp-token'].blank?
-      redirect_to action: "new"
+    Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
+    if params['payjp_token'].blank?
+      redirect_to action: "payment_method"
     else
-      customer = Payjp::Customer.create(card: params['payjp-token'])
+      customer = Payjp::Customer.create(card: params['payjp_token'])
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
         redirect_to action: "show"
