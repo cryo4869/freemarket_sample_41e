@@ -29,7 +29,6 @@ class PurchaseController < ApplicationController
     else
       redirect_to action: 'new'
     end
-
     def done
     end
   end

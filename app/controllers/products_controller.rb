@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.order("created_at ASC").limit(4)
+    @products = Product.order("created_at ASC").where.not(sell_status_id:3).limit(4)
     @search = Product.ransack(params[:q])
     @result = @search.result
   end
@@ -34,6 +34,15 @@ class ProductsController < ApplicationController
   def update
     @sell = Product.find(params[:id])
     if @sell.update(sell_params)
+      redirect_to product_path(@sell)
+    else
+      redirect_to root_path
+    end
+  end
+
+  def status
+    @sell = Product.find(params[:id])
+    if @sell.update(sell_status_id: 2)
       redirect_to product_path(@sell)
     else
       redirect_to root_path

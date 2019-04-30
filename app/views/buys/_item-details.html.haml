@@ -70,29 +70,37 @@
         (税込)
       .item-details__price__shipping-fee
         送料込み
-    - if current_user
-      - if current_user.id != @product.user.id
-        = link_to purchase_path(@product.id) do
-          %button.item-details__btn-red
-            購入画面に進む
+    - if current_user.id != @product.user.id && @product.sell_status_id == 1
+      = link_to purchase_path(@product.id) do
+        %button.item-details__btn-red
+          購入画面に進む
     .item-details__description
       - if @product.info
         = @product.info
       - else
         商品の説明はありません
-    - if current_user
-      - if current_user.id != @product.user.id
-        .item-details__button
-          .item-details__button__left
-            %button
-              .far.fa-heart
-              いいね！
-              １
-            %button
-              .far.fa-flag
-              不適切な商品の報告
-          .item-details__button__right
-            .fas.fa-lock
-            =link_to "あんしん・あんぜんへの取り組み"
+    .item-details__button
+      .item-details__button__left
+        %button
+          .far.fa-heart
+          いいね！
+          １
+        %button
+          .far.fa-flag
+          不適切な商品の報告
+      .item-details__button__right
+        .fas.fa-lock
+        =link_to "あんしん・あんぜんへの取り組み"
+- if current_user.id == @product.user.id && @product.sell_status_id == 1
+  .item-details__seller
+    .item-details__seller-edit
+      = link_to "商品の編集",edit_product_path(@product),class:"item-details__seller-btn-red"
+    .item-details__seller-or
+      %p or
+    .item-details__seller-stop
+      = link_to "商品を一旦停止する",status_product_path(@product),method: :patch ,class:"item-details__seller-btn-gray"
+    .item-details__seller-delete
+      = link_to "この商品を削除する",status_product_path(@product),method: :delete,class:"item-details__seller-btn-gray"
+
 
 
