@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def mypage
+    @products = Product.order("created_at ASC")
 
   end
 

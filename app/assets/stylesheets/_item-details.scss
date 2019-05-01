@@ -29,6 +29,8 @@
     text-align: center;
     line-height: 1;
   }
+  &__seller-edit{
+  }
 
   &__main {
     line-height: 0;
@@ -47,6 +49,7 @@
           object-fit: cover;
         }
       }
+
       .sell-stop::before{
         display: block;
         content: '';

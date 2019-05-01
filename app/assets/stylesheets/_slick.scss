@@ -100,16 +100,21 @@
 }
 .slide-arrow{
   position: absolute;
-  top: 39%;
+  top: 43%;
   z-index: 3;
 }
 
 .prev-next{
+  background: url(carousel-next.png);
   right: 3%;
   height: 46px;
   width: 31px;
 }
+.slick-slide:focus {
+  outline: none;
+}
 .prev-arrow{
+  background: url(carousel-prev.png);
     height: 46px;
     width: 31px;
     left: 3%;

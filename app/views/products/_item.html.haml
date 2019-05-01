@@ -2,10 +2,11 @@
   .item-box
     - if product.images.present?
       = image_tag product.images.first.image_url.to_s, class: 'item-box__image'
-    .item-box__name
-      = product.name
-    .item-box__price
-      ¥
-      = product.price
-    .item-box__tax
-      (税込)
+    .item-box__container
+      .item-box__name
+        = product.name
+      .item-box__price
+        ¥
+        = product.price
+      .item-box__tax
+        (税込)
