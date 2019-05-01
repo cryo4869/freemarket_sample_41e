@@ -1,7 +1,9 @@
 .single-container
   = render 'products/top-header'
   = render 'buys/item-details'
-  = render 'sell-item-change-box'
+
+  - if current_user.id == @product.user.id && @product.sell_status_id == 1 || 2
+    = render 'sell-item-change-box'
   = render 'buys/item-detail-message'
   = render 'products/app-vanner'
   = render 'products/top-footer'

@@ -5,7 +5,7 @@
         = @product.name
     .item-details__main
       .item-details__main__photo
-        .item-details__main__photo__top
+        .item-details__main__photo__top{class:"#{'sell-stop' if @product.sell_status_id == 2}"}
           = image_tag @product.images.first.image.to_s, class: 'item-details__main__photo__top__image'
         .item-details__main__photo__sub
           - @product.images.each do |image|
@@ -70,30 +70,32 @@
         (税込)
       .item-details__price__shipping-fee
         送料込み
-    - if current_user
-      - if current_user.id != @product.user.id
-        = link_to purchase_buy_path(@product.id) do
-          %button.item-details__btn-red
-            購入画面に進む
-
+    - if current_user.id != @product.user.id && @product.sell_status_id == 1
+      = link_to purchase_path(@product.id) do
+        %button.item-details__btn-red
+          購入画面に進む
+    - elsif @product.sell_status_id == 2
+      .item-details__seller-edit
+        .item-details__seller-btn-gray
+          出品停止中
     .item-details__description
       - if @product.info
         = @product.info
       - else
         商品の説明はありません
-    - if current_user
-      - if current_user.id != @product.user.id
-        .item-details__button
-          .item-details__button__left
-            %button
-              .far.fa-heart
-              いいね！
-              １
-            %button
-              .far.fa-flag
-              不適切な商品の報告
-          .item-details__button__right
-            .fas.fa-lock
-            =link_to "あんしん・あんぜんへの取り組み"
+    .item-details__button
+      .item-details__button__left
+        %button
+          .far.fa-heart
+          いいね！
+          １
+        %button
+          .far.fa-flag
+          不適切な商品の報告
+      .item-details__button__right
+        .fas.fa-lock
+        =link_to "あんしん・あんぜんへの取り組み"
+
+
 
 
