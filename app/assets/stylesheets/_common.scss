@@ -3,6 +3,13 @@
   margin: 0;
   padding: 0;
 }
+html a {
+  color: #0099e8;
+  text-decoration: none;
+}
+html a:hover{
+  text-decoration: none;
+}
 html{
   height: 100%;
 }
@@ -22,10 +29,7 @@ button, input, select, textarea {
   font-family: inherit;
   font-style: inherit;
 }
-a {
-  color: #0099e8;
-  text-decoration: none;
-}
+
 ul, ol {
   list-style: none;
 }

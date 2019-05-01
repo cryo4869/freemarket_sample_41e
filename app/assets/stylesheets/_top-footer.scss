@@ -2,6 +2,7 @@
   width: 100%;
   background-color: #212121;
   clear: both;
+  padding: 40px 0;
 }
 
 .top-footer{
@@ -48,7 +49,8 @@
     line-height: 40px;
   }
   &__logo{
-    margin-top: 60px;
+  }
+  &__copyright{
   }
   &__sell-btn{
       position: fixed;

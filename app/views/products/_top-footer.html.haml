@@ -37,17 +37,13 @@
     .top-footer__country
       .top-footer__title 国
       .top-footer__USA
-        = image_tag("/flag_us.png", class: :"top-footer__icon")
         .top-footer__name United States
-      .top-footer__UK
-        = image_tag("/flag_uk.png", class: :"top-footer__icon")
-        .top-footer__name United Kingdom
       .top-footer__JPN
-        = image_tag("/flag_jp.png", class: :"top-footer__icon")
         .top-footer__name 日本
     .top-footer__logo
-      = image_tag("/logo-white.svg", class: :"top-footer__logo__image")
-      .top-footer__copyright &copy; 2019 Mercari
+      = image_tag("logo-white.svg", class: :"top-footer__logo__image")
+    .top-footer__copyright
+      &copy; 2019 Mercari
     = link_to new_product_path,class:"top-footer__sell-btn" do
       .top-footer__sell-text
         出品
