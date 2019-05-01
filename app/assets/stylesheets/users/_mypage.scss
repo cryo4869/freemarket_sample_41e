@@ -1,0 +1,77 @@
+.mypage-content{
+  float: right;
+  width: 700px;
+  .bold {
+    @include bold;
+  }
+  &__user-icon{
+    height: 155px;
+    position: relative;
+    padding: 20px;
+    background: url(user-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    figure{
+      overflow: hidden;
+      width: 60px;
+      height: 60px;
+      margin: 0 auto;
+      border-radius: 50%;
+    }
+    a{
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      color: #333;
+    }
+    h2 {
+      font-size: 14px;
+      margin: 8px 0 0;
+    }
+  }
+  &__number{
+    margin: 8px 0 0;
+    div+div{
+      margin: 0 0 0 16px;
+    }
+    span{
+      margin: 0 0 0 8px;
+    }
+  }
+  &__evaluation{
+    display: inline-block;
+  }
+  &__sell-product{
+    display: inline-block;
+  }
+  &__tabs{
+    border: 0;
+    background: #eee;
+    a{
+      position: relative;
+      display: block;
+      color: #333;
+      font-size: 16px;
+      line-height: 72px;
+      text-decoration: none;
+    }
+    ul{
+      list-style: none;
+    }
+    li{
+      width: 50%;
+      display: inline-block;
+      text-align: center;
+      vertical-align: top;
+    }
+  }
+  &__active{
+      border-top: 2px solid #ea352d;
+      background: #fff;
+  }
+}
