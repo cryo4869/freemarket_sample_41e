@@ -33,16 +33,25 @@ class ProductsController < ApplicationController
 
   def update
     @sell = Product.find(params[:id])
-    if @sell.update(sell_params)
-      redirect_to product_path(@sell)
-    else
-      redirect_to root_path
+    if @sell.update(sell_status_id:params[:sell_status_id])
+      redirect_to product_path(@sell) and return
     end
+      @sell.update(sell_params) unless params[:product].nil?
+    redirect_to product_path(@sell)
+      else
+      redirect_to root_path
+  end
+
+  def delete
+    @sell = Product.find(params[:id])
+    @sell.destroy if @sell.user_id == current_user.id
+    redirect_to root_path
+
   end
 
   def status
     @sell = Product.find(params[:id])
-    if @sell.update(sell_status_id: 2)
+    if @sell.update(sell_status_id: params[:sell_status_id])
       redirect_to product_path(@sell)
     else
       redirect_to root_path

@@ -5,7 +5,7 @@
         = @product.name
     .item-details__main
       .item-details__main__photo
-        .item-details__main__photo__top
+        .item-details__main__photo__top{class:"#{'sell-stop' if @product.sell_status_id == 2}"}
           = image_tag @product.images.first.image.to_s, class: 'item-details__main__photo__top__image'
         .item-details__main__photo__sub
           - @product.images.each do |image|
@@ -74,6 +74,10 @@
       = link_to purchase_path(@product.id) do
         %button.item-details__btn-red
           購入画面に進む
+    - elsif @product.sell_status_id == 2
+      .item-details__seller-edit
+        .item-details__seller-btn-gray
+          出品停止中
     .item-details__description
       - if @product.info
         = @product.info
@@ -91,16 +95,7 @@
       .item-details__button__right
         .fas.fa-lock
         =link_to "あんしん・あんぜんへの取り組み"
-- if current_user.id == @product.user.id && @product.sell_status_id == 1
-  .item-details__seller
-    .item-details__seller-edit
-      = link_to "商品の編集",edit_product_path(@product),class:"item-details__seller-btn-red"
-    .item-details__seller-or
-      %p or
-    .item-details__seller-stop
-      = link_to "商品を一旦停止する",status_product_path(@product),method: :patch ,class:"item-details__seller-btn-gray"
-    .item-details__seller-delete
-      = link_to "この商品を削除する",status_product_path(@product),method: :delete,class:"item-details__seller-btn-gray"
+
 
 
 

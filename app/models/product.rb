@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  has_many :images
+  has_many :images, foreign_key: :product_id,dependent: :destroy
   accepts_nested_attributes_for :images
   belongs_to :delivery_fee_owner
   belongs_to :shipping_method

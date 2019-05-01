@@ -24,7 +24,6 @@ Rails.application.routes.draw do
     get 'category_middle', on: :collection
     get 'category_bottom', on: :collection
     get 'search', on: :collection
-    patch 'status', on: :member
   end
   resources :buys
 
