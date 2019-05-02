@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function () {
-
   var sub_photo = $('.item-details__main__photo__sub');
   var top_photo = $('.item-details__main__photo__top');
 
