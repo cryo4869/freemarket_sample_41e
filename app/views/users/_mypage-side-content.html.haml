@@ -1,3 +1,4 @@
+@@ -1,101 +0,0 @@
 .mypage-side-content
   %nav.mypage-side-content__nav
     %ul.mypage-side-content__nav-list
@@ -72,7 +73,7 @@
       %h3 設定
     %ul.mypage-side-content__nav-list
       %li
-        = link_to root_path,class:"mypage-side-content__nav-list-item" do
+        = link_to edit_user_path(current_user.id),class:"mypage-side-content__nav-list-item" do
           プロフィール
           %i.fas.fa-chevron-right
       %li
