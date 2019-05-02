@@ -72,7 +72,7 @@
       %h3 設定
     %ul.mypage-content__nav-list
       %li
-        = link_to root_path,class:"mypage-content__nav-list-item" do
+        = link_to edit_user_path(current_user.id),class:"mypage-content__nav-list-item" do
           プロフィール
           %i.fas.fa-chevron-right
       %li

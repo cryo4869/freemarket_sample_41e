@@ -1,0 +1,14 @@
+.registration-main__form
+  = form_for(current_user) do |f|
+    = devise_error_messages!
+    .sign-up-form
+      = f.label :ニックネーム
+      %span.form-require 必須
+      %br/
+      = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: " 例）メルカリ太郎"
+    .sign-up-form
+      = f.label :プロフィール文
+      %span.form-require
+      %br/
+      = f.text_field :profile, autofocus: true, autocomplete: "profile", placeholder: " "
+    = f.submit "変更"

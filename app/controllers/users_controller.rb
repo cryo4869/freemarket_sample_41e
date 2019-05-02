@@ -8,9 +8,19 @@ class UsersController < ApplicationController
     @products = Product.order("created_at ASC")
   end
 
+  def edit
+  end
+
+  def update
+    if current_user.update(user_params)
+      redirect_to user_path(current_user.id)
+    else
+      render :edit
+    end
+  end
+
   def mypage
     @products = Product.order("created_at ASC")
-
   end
 
   def card_create
@@ -26,5 +36,11 @@ class UsersController < ApplicationController
       else
         redirect_to action: "payment_method"
       end
-    end
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:nickname, :profile)
+  end
+
 end
