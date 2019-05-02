@@ -1,10 +1,13 @@
 .items-box-container
-  .sell-item-change-box
-    %button.sell-item-change-box__btn-red
-      商品の編集
-    %p.sell-item-change-box__text
-      or
-    %button.sell-item-change-box__btn-gray
-      出品を一旦停止する
-    %button.sell-item-change-box__btn-gray
-      この商品を削除する
+  .item-details__seller
+    .item-details__seller-edit
+      = link_to "商品の編集",edit_product_path(@product.id),class:"item-details__seller-btn-red"
+    .item-details__seller-or
+      %p or
+    .item-details__seller-stop
+      - if @product.sell_status.id == 1
+        = link_to "商品を一旦停止する", product_path(@product,sell_status_id: 2),method: :patch ,class:"item-details__seller-btn-gray"
+      - elsif @product.sell_status.id == 2
+        = link_to "出品を再開する", product_path(@product,sell_status_id: 1),method: :patch ,class:"item-details__seller-btn-red"
+    .item-details__seller-delete
+      = link_to "この商品を削除する",product_path(@product),method: :delete,class:"item-details__seller-btn-gray"

@@ -1,0 +1,78 @@
+.payment-container{
+  background: #fff;
+  float: right;
+  width: 700px;
+}
+.payment-content{
+  .form-require {
+    background: #ea352d;
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+    font-weight: 600;
+  }
+  &__select-wrap{
+    @include select-wrap;
+    width: 30%;
+    display: inline-block;
+  }
+  .select-default {
+    @include select-default;
+  }
+  &__credit-head{
+    padding: 12px 4%;
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+    line-height: 1.4;
+    font-size: 18px
+  }
+  &__form{
+    border-top: 1px solid #f5f5f5;
+    padding: 40px;
+  }
+  &__content{
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  &__credit-icon{
+    width:49px;
+    height: 20px;
+  }
+  &__card-list{
+    margin: 8px 0 0;
+    font-size: 0;
+    ul{
+      list-style: none;
+    }
+    li{
+      display: inline-block;
+    }
+  }
+  &__form-expire{
+    margin: 40px 0 0;
+  }
+  &__form-security-code{
+    margin: 40px 0 0;
+  }
+  &__seqcode{
+    margin: 8px 0 0;
+  }
+  &__seqcode-text{
+    text-align: right;
+    color: #0099e8;
+  }
+  &__btn{
+      margin: 40px 0 0;
+      @include btn-default;
+      @include btn-red;
+  }
+  &__month{
+    display: inline-block;
+  }
+  &__year {
+    display: inline-block;
+  }
+}
