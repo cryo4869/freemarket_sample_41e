@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+
   def index
     @products = Product.order("created_at ASC").where.not(sell_status_id:3).limit(4)
     @search = Product.ransack(params[:q])

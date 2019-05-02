@@ -110,10 +110,54 @@
     }
   &__item-body{
     margin: 0 40px 0 62px;
+    .fa-clock{
+      margin: 0 8px 0 0;
+    }
+  }
+
+    .fa-chevron-right{
+      position: absolute;
+       top: 50%;
+      right: 16px;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+    }
+  &__item-text{
+    font-size:14px;
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    max-height: 4.4em;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+  }
+  &__go-lists{
+    background-color: white;
+    padding: 16px;
+  }
+  &__go-list{
+    display: block;
+    height: 56px;
+    margin: 0 auto;
+    background: #eee;
+    color: #333;
+    line-height: 56px;
+    text-align: center;
+    }
+  &__tab-container{
+    margin: 40px 0 0;
+    background: #fff;
     }
     .fa-clock{
       margin: 0 8px 0 0;
     }
+
+    .fa-clock{
+      margin: 0 8px 0 0;
+    }
+
     .fa-chevron-right{
       position: absolute;
        top: 50%;
@@ -169,4 +213,5 @@
     font-size: 16px;
     color: #ccc;
   }
-  }
+}
+
