@@ -73,6 +73,29 @@
         font-weight: bold;
         transform: rotate(-45deg);
       }
+      .sell-sold::before{
+        display: block;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border: 50px solid #ea352d ;
+        border-right: 50px solid transparent;
+        border-bottom: 50px solid transparent;
+      }
+      .sell-sold::after {
+        position: absolute;
+        top: 34px;
+        left: 0;
+        display: block;
+        content: 'SOLD';
+        color: #fff;
+        font-size: 22px;
+        font-weight: bold;
+        transform: rotate(-45deg);
+      }
       &__sub {
         letter-spacing: -0.4em;
         // img同士の横にある隙間を消す
