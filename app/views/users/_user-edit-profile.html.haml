@@ -1,8 +1,13 @@
-.registration-main__form
+.user-edit-profile
+  %h2 プロフィール
   = form_for(current_user) do |f|
     = devise_error_messages!
-    .sign-up-form
-      = f.label :ニックネーム
-      = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: " 例）メルカリ太郎"
-      = f.text_area :profile,class:"sell-content__desc_textarea textarea-default",rows:"5" ,placeholder:"例) こんにちわ☆ご覧いただいきありがとうがざいます！可愛いものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に９号です。気持ちよくお取引きできるように心がけていますので、商品や発送方法などご質問がありましたらご気軽にどうぞ♪"
-    = f.submit "変更する" ,class: "sell-content__btn-red"
+    .user-edit-profile__box
+      .user-edit-profile__box__wrap
+        .user-edit-profile__box__wrap__profile
+          %img{ :src => 'https://public.potaufeu.asahi.com/4e91-p/picture/13545647/061f1eeff8bb2432950152393bddf7cb.jpg', :class => 'user-edit-profile__box__wrap__profile__image'}
+          = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: " 例）メルカリ太郎"
+    .user-edit-profile__textarea
+      = f.text_area :profile,class:"",rows:"5" ,placeholder:"例) こんにちわ☆ご覧いただいきありがとうがざいます！可愛いものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に９号です。気持ちよくお取引きできるように心がけていますので、商品や発送方法などご質問がありましたらご気軽にどうぞ♪"
+    .user-edit-profile__submit
+      = f.submit "変更する" ,class:"user-edit-profile__submit__btn"
