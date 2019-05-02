@@ -37,9 +37,10 @@ class ProductsController < ApplicationController
     if @sell.update(sell_status_id:params[:sell_status_id])
       redirect_to product_path(@sell) and return
     end
-      @sell.update(sell_params) unless params[:product].nil?
+
+    @sell.update(sell_params) && current_user.id == @sell.user.id && params[:product].nil?
     redirect_to product_path(@sell)
-      else
+  else
       redirect_to root_path
   end
 

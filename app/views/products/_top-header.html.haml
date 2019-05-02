@@ -21,7 +21,9 @@
           .user-info__mypage-link
             = link_to user_path(current_user) do
               = image_tag "mercari-app.png",class: "mypage__image",style:"width:32px;"
-            .mypage__title マイページ
+            .mypage__title
+              = link_to "マイページ",mypage_user_path(current_user)
+              = link_to "ログアウト",destroy_user_session_path,method: :delete
       - else
         .user-info__mypage
           %ul.user-info__information

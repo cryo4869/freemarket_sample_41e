@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       get "card"
       get "card_create"
       post :add_card
+    end
+    member do
       get :mypage
     end
   end
