@@ -70,7 +70,7 @@
         (税込)
       .item-details__price__shipping-fee
         送料込み
-    - if current_user.id != @product.user.id && @product.sell_status_id == 1
+    - if @product.sell_status_id == 1
       = link_to purchase_path(@product.id) do
         %button.item-details__btn-red
           購入画面に進む
@@ -95,9 +95,8 @@
       .item-details__button__right
         .fas.fa-lock
         =link_to "あんしん・あんぜんへの取り組み"
-- if current_user.id == @product.user_id
+- if current_user.nil?
+- elsif current_user.id == @product.user_id
   = render 'products/sell-item-change-box'
-
-
 
 
