@@ -1,8 +1,9 @@
 .users-detail
-  .users-detail__photo
-    %img{ :src => 'https://public.potaufeu.asahi.com/4e91-p/picture/13545647/061f1eeff8bb2432950152393bddf7cb.jpg', :class => 'users-detail__photo__image'}
-  .users-detail__name
-    = link_to @user.nickname, user_path(@user.id)
+  = link_to user_path(@user.id) do
+    .users-detail__photo
+      %img{ :src => 'https://public.potaufeu.asahi.com/4e91-p/picture/13545647/061f1eeff8bb2432950152393bddf7cb.jpg', :class => 'users-detail__photo__image'}
+    .users-detail__name
+      = @user.nickname
   .users-detail__score
     %span 評価0
     %span 出品数0
