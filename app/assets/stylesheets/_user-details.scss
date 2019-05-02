@@ -19,6 +19,13 @@
     border-radius: 95px;
     object-fit: cover;
   }
+  &__name {
+    padding-top: 8px;
+    a {
+      color: black;
+    font-size: 16px;
+    }
+  }
   &__score {
     padding-top: 10px;
     font-size: 13px;
