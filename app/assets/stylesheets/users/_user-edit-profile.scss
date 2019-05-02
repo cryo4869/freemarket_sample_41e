@@ -23,7 +23,11 @@
           vertical-align: middle;
         }
         input {
-          width: 220px;
+          padding-left: 16px;
+          outline: none;
+          border: none;
+          border-radius: 4px;
+          width: 220px !important;
         }
       }
     }
