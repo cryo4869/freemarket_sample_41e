@@ -1,0 +1,15 @@
+.gray-background
+.user-page
+  .user-page__content
+    .user-profile
+      .user-profile__title
+        %h2.user-profile__title__text プロフィール
+      .user-profile__background
+        .user-profile__background__image
+        %img{ :src => 'https://public.potaufeu.asahi.com/4e91-p/picture/13545647/061f1eeff8bb2432950152393bddf7cb.jpg', :class => 'user-profile__background__image--photo'}
+        %input{ type: "text",name: "",placeholder: "",class: :"user-profile__background__image--var" }
+      .user-profile__text
+        %textarea{ type: "text",placeholder: "よろしくお願いします",name: "",class: :"user-profile__text--area"}
+      .user-profile__btn
+        %a{href: "",class: "user-profile__btn--change"} 変更する
+

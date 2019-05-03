@@ -1,7 +1,7 @@
 .top-header
   .clearfix
     = link_to root_path do
-      = image_tag("/logo.svg", class: :"top-header__logo")
+      = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?4194600336", class: :"top-header__logo")
     .top-header__form
       = form_tag(" /products/search", method: :get)
       = text_field_tag :text, '', placeholder: 'キーワードから探す', name: 'keyword',class: 'form__input'
@@ -13,7 +13,7 @@
     .top-header__user-info
       .user-info__mypage
         = link_to root_path do
-          = image_tag("/member_photo_noimage_thumb.png", class: :"mypage__image")
+          = image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", class: :"mypage__image")
           .mypage__title マイページ
       .user-info__notice
         .fa.fa-bell
