@@ -11,12 +11,12 @@
       .sign-in-content__sub
         .sign-in-content__main
           .single-content__facebook
-            = image_tag '/flogo-RGB-HEX-Blk-512.png', class: "facebook-img"
+            = image_tag 'flogo-RGB-HEX-Blk-512.png', class: "facebook-img"
             .single-content__two
               Facebookで登録
         .sign-in-content__main
           .single-content__google
-            = image_tag '/google.png', class: "google-img"
+            = image_tag 'google.png', class: "google-img"
             .single-content__three
               Googleで登録
       = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "sign-in-form"}) do |f|
