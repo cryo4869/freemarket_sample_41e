@@ -1,6 +1,8 @@
 .top-footer__wrap{
   width: 100%;
   background-color: #212121;
+  clear: both;
+  padding: 40px 0;
 }
 
 .top-footer{
@@ -47,6 +49,30 @@
     line-height: 40px;
   }
   &__logo{
-    margin-top: 60px;
+  }
+  &__copyright{
+  }
+  &__sell-btn{
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 160px;
+      height: 160px;
+      font-size: 22px;
+      background: #ea352d;
+      color: #fff;
+      text-align: center;
+      border-radius: 50%;
+    .fa-camera{
+      display: block;
+      margin: 8px 0 0;
+      font-size: 54px;
+    }
+    a {
+      text-decoration: none;
+    }
+  }
+  &__sell-text{
+    margin: 32px 0 0;
   }
 }

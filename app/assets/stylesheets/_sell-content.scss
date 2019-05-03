@@ -63,28 +63,8 @@
     .sell-content {
       padding: 40px;
       border-top: 1px solid #eee;
-      .input-default {
-        margin: 8px 0 0;
-        width: 100%;
-        max-width: 98%;
-        padding: 10px 0 8px 14px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        background: #fff;
-        line-height: 1.5;
-        font-size: 16px;
-      }
-      .form-question {
-        text-decoration: none;
-        display: inline-block;
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        background: #0099e8;
-        color: #fff;
-        line-height: 14px;
-        font-size: 12px;
-        text-align: center;
+      .form-group {
+        @include  form-group;
       }
       .sub-head {
         float: left;
@@ -93,15 +73,6 @@
       }
       .bold {
         @include bold;
-      }
-      .form-group {
-        margin: 40px 0 0;
-        &:first-child {
-          margin: 0;
-        }
-        select {
-          width: 100%;
-        }
       }
       .l-left {
         float: left;
@@ -117,42 +88,10 @@
         padding-right: 0 !important;
       }
       &__select-wrap {
-        position: relative;
-        background: #fff;
-        margin: 8px 0 0;
-        width: 400px;
-        i {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-        }
-        select {
-          appearance: none;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-        }
-        select::-ms-expand {
-          display: none;
-        }
-        .fa-chevron-down{
-          font-size: 18px;
-          color: #888;
-          z-index: 5;
-          top: 30%;
-        }
+        @include select-wrap;
       }
       &__select-default {
-        position: relative;
-        width: 100%;
-        z-index: 2;
-        height: 48px;
-        padding: 0 16px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        background: 0;
-        font-size: 16px;
-        line-height: 1.5;
-        cursor: pointer;
+        @include select-default;
       }
       &__delivery {
         @include form-box;
@@ -206,6 +145,7 @@
       &__btn-red {
         @include btn-default;
         @include btn-red;
+        margin: 40px 0 0;
       }
       &__btn-gray {
         @include btn-default;

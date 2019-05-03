@@ -1,0 +1,59 @@
+.user-edit-profile{
+  margin: auto;
+  margin-top: 10px;
+  max-width: 700px;
+  background-color:white;
+  h2 {
+    padding: 16px;
+  }
+  &__box {
+    height:160px;
+    width:100%;
+    background-image: url("user-bg.jpg");
+    &__wrap {
+      text-align: center;
+      &__profile {
+        padding-top: 64px;
+        img {
+          margin-right: 12px;
+          width: 60px;
+          height: 60px;
+          border-radius: 30px;
+          object-fit: cover;
+          vertical-align: middle;
+        }
+        input {
+          padding-left: 16px;
+          outline: none;
+          border: none;
+          border-radius: 4px;
+          width: 220px !important;
+        }
+      }
+    }
+  }
+  &__textarea {
+    margin-top: 32px;
+    width: 100%;
+    text-align: center;
+    textarea{
+      width: 95%;
+      min-height: 104px;
+      border: 1px solid #ccc;
+      background: #fff;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
+  &__submit{
+    &__btn {
+      @include btn-red;
+      @include btn-default;
+      width: 95%;
+      margin: 0 auto;
+      margin-top: 16px;
+      margin-bottom: 40px;
+    }
+
+  }
+}

@@ -1,11 +1,13 @@
 class Product < ApplicationRecord
-  has_many :images
+  has_many :images, foreign_key: :product_id,dependent: :destroy
   accepts_nested_attributes_for :images
   belongs_to :delivery_fee_owner
   belongs_to :shipping_method
   belongs_to :delivery_date
   belongs_to :category
   belongs_to :size
+  belongs_to :user
+  belongs_to :sell_status, optional: true
   validates :name, presence: true
 
   enum status: {  '新品未使用': 1, '未使用に近い': 2, '目立った傷や汚れなし': 3,

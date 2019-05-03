@@ -1,23 +1,22 @@
 .items-box-container
   .item-details
     .item-details__name
-      %h1 カーディガン
+      %h1
+        = @product.name
     .item-details__main
       .item-details__main__photo
-        .item-details__main__photo__top
-          %img{ :src => 'https://public.potaufeu.asahi.com/4e91-p/picture/13545647/061f1eeff8bb2432950152393bddf7cb.jpg', :class => 'item-details__main__photo__top__image'}
+        .item-details__main__photo__top{class:"#{sell_status(@product.sell_status_id)}"}
+          = image_tag @product.images.first.image.to_s, class: 'item-details__main__photo__top__image'
         .item-details__main__photo__sub
-          %img{ :src => 'https://public.potaufeu.asahi.com/4e91-p/picture/13545647/061f1eeff8bb2432950152393bddf7cb.jpg', :class => 'item-details__main__photo__sub__image'}
-          %img{ :src => 'https://public.potaufeu.asahi.com/4e91-p/picture/13545647/061f1eeff8bb2432950152393bddf7cb.jpg', :class => 'item-details__main__photo__sub__image'}
-          %img{ :src => 'https://public.potaufeu.asahi.com/4e91-p/picture/13545647/061f1eeff8bb2432950152393bddf7cb.jpg', :class => 'item-details__main__photo__sub__image'}
-          %img{ :src => 'https://public.potaufeu.asahi.com/4e91-p/picture/13545647/061f1eeff8bb2432950152393bddf7cb.jpg', :class => 'item-details__main__photo__sub__image'}
+          - @product.images.each do |image|
+            = image_tag image.image.to_s, class: 'item-details__main__photo__sub__image'
       .item-details__main__table
         %table
           %tbody
             %tr
               %th 出品者
               %td
-                =link_to "カワ", user_path
+                =link_to @product.user.nickname, user_path(@product.user.id)
                 .item-user-ratings
                   .item-user-ratings__list
                     %i.fas.fa-laugh
@@ -33,50 +32,66 @@
               %td
                 .category
                   = link_to products_path ,class: "category__magin-bottom" do
-                    メンズ
+                    = @product.category.root.name
 
                 .category
                   = link_to  products_path ,class: "" do
                     .fas.fa-chevron-right
-                    トップス
+                    = @product.category.parent.name
                 .category
                   = link_to products_path,class: "" do
                     .fas.fa-chevron-right
-                    カーディガン
+                    = @product.category.name
             %tr
               %th ブランド
-              %td
+              %td= @product.brand
             %tr
               %th 商品のサイズ
-              %td L
+              %td= @product.size.size
             %tr
               %th 商品の状態
-              %td 目立った傷や汚れなし
+              %td= @product[:status]
             %tr
               %th 配送料の負担
-              %td 送料込み（出品者負担）
+              %td= @product.delivery_fee_owner.delivery_fee_owner
             %tr
               %th 配送の方法
-              %td らくらくメルカリ便
+              %td= @product.shipping_method.shipping_method
             %tr
               %th 配送元地域
               %td
-                =link_to "千葉県"
+                =link_to @product[:shipping_from]
             %tr
               %th 発送日の目安
-              %td 2~3日で発送
+              %td= @product.delivery_date.delivery_date
     .item-details__price
-      .item-details__price__main
-        ¥500
+      .item-details__price__main= "¥#{@product.price}"
       .item-details__price__tax
         (税込)
       .item-details__price__shipping-fee
         送料込み
-    %button.item-details__btn-red
-      購入画面に進む
-    / ⬆︎current-userだったら表示しない
+    - if user_signed_in?
+      - if current_user.id == @product.user_id
+    
+      - elsif @product.sell_status_id == 1
+        .item-details
+          = link_to purchase_path(@product.id) do
+            %button.item-details__btn-red
+              購入画面に進む
+      - elsif @product.sell_status_id == 2
+        .item-details__seller-edit
+          .item-details__seller-btn-gray
+            出品停止中
+    - else
+      .item-details
+        = link_to purchase_path(@product.id) do
+          %button.item-details__btn-red
+            購入画面に進む
     .item-details__description
-      %p 商品の説明はありません
+      - if @product.info
+        = @product.info
+      - else
+        商品の説明はありません
     .item-details__button
       .item-details__button__left
         %button
@@ -89,6 +104,8 @@
       .item-details__button__right
         .fas.fa-lock
         =link_to "あんしん・あんぜんへの取り組み"
-    / ⬆︎current-userだったら表示しない
+- if current_user.nil?
+- elsif current_user.id == @product.user_id
+  = render 'products/sell-item-change-box'
 
 

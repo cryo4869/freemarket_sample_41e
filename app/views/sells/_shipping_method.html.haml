@@ -1,3 +1,0 @@
-= fields_for @sell,url:sells_path, class:"sell-container__form" do |f|
- = f.collection_select :shipping_method_id, ShippingMethod.where(delivery_fee_owner_id: delivery_fee_owner_id), :id, :shipping_method,{prompt: "---"},{class:"sell-content__select-default",id:"shipping_method"}
- %i.fa.fa-angle-down.fa-2x

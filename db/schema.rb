@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_15_150851) do
+ActiveRecord::Schema.define(version: 2019_04_29_181755) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 2019_04_15_150851) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "customer_id"
+    t.string "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -70,13 +78,22 @@ ActiveRecord::Schema.define(version: 2019_04_15_150851) do
     t.string "brand"
     t.integer "shipping_from"
     t.bigint "size_id"
+    t.integer "user_id"
+    t.bigint "sell_status_id"
     t.index ["brand"], name: "index_products_on_brand"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["delivery_date_id"], name: "index_products_on_delivery_date_id"
     t.index ["delivery_fee_owner_id"], name: "index_products_on_delivery_fee_owner_id"
     t.index ["name"], name: "index_products_on_name"
+    t.index ["sell_status_id"], name: "index_products_on_sell_status_id"
     t.index ["shipping_method_id"], name: "index_products_on_shipping_method_id"
     t.index ["size_id"], name: "index_products_on_size_id"
+  end
+
+  create_table "sell_statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "shipping_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -103,9 +120,12 @@ ActiveRecord::Schema.define(version: 2019_04_15_150851) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nickname", null: false
-    t.integer "birth_year", null: false
-    t.integer "birth_month", null: false
-    t.integer "birth_day", null: false
+    t.date "birth_year", null: false
+    t.integer "point"
+    t.string "icon_picture"
+    t.string "profile"
+    t.string "background_image"
+    t.integer "telephone"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -115,6 +135,7 @@ ActiveRecord::Schema.define(version: 2019_04_15_150851) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "delivery_dates"
   add_foreign_key "products", "delivery_fee_owners"
+  add_foreign_key "products", "sell_statuses"
   add_foreign_key "products", "shipping_methods"
   add_foreign_key "products", "sizes"
 end

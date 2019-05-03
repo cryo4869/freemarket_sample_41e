@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function() {
     size.hide();
     if (topValue != '' ){
       $.ajax({
-        url: '/sells/category_middle',
+        url: '/products/category_middle',
         type: "get",
         data: {
           parent_id: topValue
@@ -29,7 +29,7 @@ $(document).on('turbolinks:load', function() {
     var middleValue = $('#category-middle option:selected').val();
     if (topValue != '') {
       $.ajax({
-        url: '/sells/category_bottom',
+        url: '/products/category_bottom',
         type: "get",
         data: {
           top_id: topValue,
@@ -60,7 +60,7 @@ $(document).on('turbolinks:load', function() {
         }
         $.ajax({
             type: 'GET',
-            url: '/sells/shipping_method',
+            url: '/products/shipping_method',
             data: {
             delivery_fee_owner_id: $(this).val()
         }

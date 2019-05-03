@@ -1,6 +1,3 @@
-body{
-  margin: 0;
-}
 .top-header{
   width: 1020px;
   margin: 0 auto;
@@ -47,14 +44,12 @@ body{
   &__user-info{
     line-height: 50px;
     .user-info__mypage{
-    display: inline-block;
-    margin-left: 420px;
+    text-align: right;
       .mypage__image{
-        float: left;
         border-radius: 50%;
         width: 32px;
         height: 32px;
-        margin-top: 10px;
+        vertical-align: middle;
       }
       .mypage__title{
         display: inline-block;
@@ -63,17 +58,17 @@ body{
       }
     }
     .user-info__notice{
+      padding: 0 14px;
       display: inline-block;
       font-size: 18px;
-      margin-left: 10px;
       .notice__text{
         font-size: 14px;
         display: inline-block;
       }
     }
     .user-info__todo{
+      padding: 0 14px;
       display: inline-block;
-      margin-left: 10px;
       font-weight: normal;
       .fa-check{
         font-size: 22px;
@@ -85,4 +80,25 @@ body{
       }
     }
   }
+}
+.user-info__mypage-link{
+  padding: 0 14px;
+  display: inline-block;
+}
+.user-info__signup{
+  display: inline-block;
+}
+.user-info__signin{
+  display: inline-block;
+}
+.user-info__box1{
+  padding: 0 10px;
+  font-weight: bold;
+  color: white;
+  background: red;
+  border-radius: 7px;
+  margin: 5px;
+}
+.user-info__information{
+
 }

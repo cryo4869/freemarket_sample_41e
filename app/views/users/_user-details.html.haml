@@ -1,19 +1,21 @@
 .users-detail
-  .users-detail__photo
-    %img{ :src => 'https://public.potaufeu.asahi.com/4e91-p/picture/13545647/061f1eeff8bb2432950152393bddf7cb.jpg', :class => 'users-detail__photo__image'}
-  %a テスト
+  = link_to user_path(@user.id) do
+    .users-detail__photo
+      %img{ :src => 'https://public.potaufeu.asahi.com/4e91-p/picture/13545647/061f1eeff8bb2432950152393bddf7cb.jpg', :class => 'users-detail__photo__image'}
+    .users-detail__name
+      = @user.nickname
   .users-detail__score
-    %span 評価144
-    %span 出品数222
+    %span 評価0
+    %span 出品数0
   .users-detail__rating
     .users-detail__rating__list
       %i.fas.fa-laugh
-      %span 114
+      %span 0
     .users-detail__rating__list
       %i.fas.fa-meh
-      %span 3
+      %span 0
     .users-detail__rating__list
       %i.fas.fa-frown
-      %span 1
+      %span 0
   .users-detail__description
-    ここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメントここはコメント
+    = @user.profile
