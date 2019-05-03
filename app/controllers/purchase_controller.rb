@@ -22,12 +22,9 @@ class PurchaseController < ApplicationController
       )
     product.update(sell_status_id: 3)
     if product.save!
-    redirect_to action: 'done'
+    redirect_to product_path(product)
     else
       redirect_to action: 'new'
-    end
-    def done
-        
     end
   end
 end
