@@ -70,14 +70,23 @@
         (税込)
       .item-details__price__shipping-fee
         送料込み
-    - if @product.sell_status_id == 1
-      = link_to purchase_path(@product.id) do
-        %button.item-details__btn-red
-          購入画面に進む
-    - elsif @product.sell_status_id == 2
-      .item-details__seller-edit
-        .item-details__seller-btn-gray
-          出品停止中
+    - if user_signed_in?
+      - if current_user.id == @product.user_id
+    
+      - elsif @product.sell_status_id == 1
+        .item-details
+          = link_to purchase_path(@product.id) do
+            %button.item-details__btn-red
+              購入画面に進む
+      - elsif @product.sell_status_id == 2
+        .item-details__seller-edit
+          .item-details__seller-btn-gray
+            出品停止中
+    - else
+      .item-details
+        = link_to purchase_path(@product.id) do
+          %button.item-details__btn-red
+            購入画面に進む
     .item-details__description
       - if @product.info
         = @product.info
